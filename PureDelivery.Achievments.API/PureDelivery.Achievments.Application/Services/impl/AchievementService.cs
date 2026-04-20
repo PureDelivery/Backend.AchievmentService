@@ -56,11 +56,6 @@ namespace PureDelivery.Achievments.Application.Services.impl
                     LoyaltyPointsBonus = finished.Achievment.LoyaltyPointsReward
                 });
 
-                await publishEndpoint.Publish(new LoyaltyPointsChangeEvent
-                {
-                    UserId = userId,
-                    PointsToChange = finished.Achievment.LoyaltyPointsReward,
-                });
 
                 await unitOfWork.SaveChangesAsync();
                 await transaction.CommitAsync();
