@@ -1,6 +1,7 @@
 ﻿using MassTransit;
 using PureDelivery.Achievments.Application.Constants;
 using PureDelivery.Achievments.Application.EventHandler;
+using PureDelivery.Shared.Contracts.Domain.Enums;
 using PureDelivery.Shared.Contracts.Events.Orders;
 using PureDelivery.Shared.Contracts.Events.Payments;
 using System;
@@ -17,7 +18,7 @@ namespace PureDelivery.Achievments.API.Consumers
 
             await eventHandler.HandleEventAsync(Guid.Parse(e.CustomerId), EventCriterias.OrderPaid, (double)e.Amount);
 
-            if (e.PaymentMethod == 1)
+            if (e.PaymentMethod == PaymentMethod.Card)
                 await eventHandler.HandleEventAsync(Guid.Parse(e.CustomerId), EventCriterias.OrderPaidCreditCard, (double)e.Amount);
             if (e.Amount > 500)
                 await eventHandler.HandleEventAsync(Guid.Parse(e.CustomerId), EventCriterias.OrderMoreThan(500), (double)e.Amount);

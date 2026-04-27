@@ -51,9 +51,9 @@ namespace PureDelivery.Achievments.Application.Services.impl
                 {
                     UserId = userId,
                     AchievementDefinitionId = achievementId,
-                    AchievementName = finished.AchievmentId.ToString(),
-                    AchievementDescription = finished.Achievment.Description,
-                    LoyaltyPointsBonus = finished.Achievment.LoyaltyPointsReward
+                    AchievementName = activeAchievement.Achievment.Name,
+                    AchievementDescription = activeAchievement.Achievment.Description,
+                    LoyaltyPointsBonus = activeAchievement.Achievment.LoyaltyPointsReward
                 });
 
 
